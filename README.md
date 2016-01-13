@@ -46,8 +46,7 @@ get JSONObject :
 	
 
 
-License
-----------
+#### License
 
 This source is The MIT License.
 
