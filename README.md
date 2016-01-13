@@ -35,7 +35,7 @@ This library is helper of JSONObject and JSONArray
 
 HKJson can map type: *String*, *Array\<String\>*, *Boolean*, *BooleanArray*, *Int*, *IntArray*, *Long*, *LongArray*, *Double*, *DoubleArray*, *Date*, *Array\<Date\>*, *T : IJson*, *Array\<T : IJson\>*  
 other type is OK to use custom method  
-[for example](https://github.com/MeilCli/HKJson/tree/master/library/src/androidTest/java/com/twitter/meil_mitu/hkjson/example)  
+[for example](https://github.com/MeilCli/HKJson/tree/master/library/src/androidTest/kotlin/com/twitter/meil_mitu/hkjson/example)  
   
 to Object :  
 
