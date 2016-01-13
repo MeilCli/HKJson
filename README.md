@@ -15,7 +15,6 @@ This library is helper of JSONObject and JSONArray
 #### Usage
 	import com.twitter.meil_mitu.hkjson.HKJson
 	import com.twitter.meil_mitu.hkjson.IJson
-	import com.twitter.meil_mitu.hkjson.IJsonArray
 	import org.json.JSONObject
 	
 	class Data : IJson {
