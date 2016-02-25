@@ -9,6 +9,12 @@ interface IJson {
 
     val hkjson: HKJson
 
+    fun parseJson(json :JSONObject){
+        hkjson.parse(json)
+    }
+
+    fun makeJson() = hkjson.make()
+
     /*
     * String
     * */

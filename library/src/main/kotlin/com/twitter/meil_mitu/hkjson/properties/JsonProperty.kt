@@ -24,12 +24,12 @@ open class JsonProperty<T>(
     }
 
     override fun put(json: JSONObject) {
-        require(t != null) { "must init json" }
+        require(t != null) { "must init json key:$key" }
         putter(json, key, t!!)
     }
 
     override fun getValue(thisRef: IJson, property: KProperty<*>): T {
-        require(t != null) { "must init json" }
+        require(t != null) { "must init json key:$key" }
         return this.t!!
     }
 
