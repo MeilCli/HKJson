@@ -38,11 +38,11 @@ other type is OK to use custom method
   
 to Object :  
 
-	hkjson.parse(JSONObject)
+	parseJson(JSONObject)
 	
 get JSONObject :   
 
-	hkjson.make()
+	makeJson()
 	
 
 
