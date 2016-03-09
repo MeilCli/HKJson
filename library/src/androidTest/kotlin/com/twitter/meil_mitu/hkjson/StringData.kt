@@ -1,29 +1,19 @@
-package com.twitter.meil_mitu.kjson
+package com.twitter.meil_mitu.hkjson
 
-import com.twitter.meil_mitu.hkjson.HKJson
-import com.twitter.meil_mitu.hkjson.IJson
-import com.twitter.meil_mitu.hkjson.IJsonArray
+import com.twitter.meil_mitu.hkjson.objects.StringJson
 import org.json.JSONObject
 
-class StringData : IJson {
+class StringData(json: JSONObject? = null) : IJson by HKJson(json) {
 
-    override val hkjson = HKJson()
 
     val testStringValKey = "test_string_val"
-    val testStringVal: String by jsonString(testStringValKey)
+    val testStringVal: String by StringJson.json(testStringValKey)
     val testStringVarKey = "test_string_var"
-    var testStringVar: String by jsonString(testStringVarKey)
+    var testStringVar by StringJson.json(testStringVarKey) // type is omitted
     val testOptionalStringValKey = "test_optional_string_val"
-    val testOptionalStringVal: String? by jsonOptionalString(testOptionalStringValKey)
+    val testOptionalStringVal: String? by StringJson.jsonOptional(testOptionalStringValKey)
     val testOptionalStringVarKey = "test_optional_string_var"
-    var testOptionalStringVar: String? by jsonOptionalString(testOptionalStringVarKey)
-
-    constructor() {
-    }
-
-    constructor(json: JSONObject) {
-        hkjson.parse(json)
-    }
+    var testOptionalStringVar by StringJson.jsonOptional(testOptionalStringVarKey)
 
     companion object : IJsonArray<StringData> {
 

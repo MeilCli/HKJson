@@ -1,5 +1,6 @@
 package com.twitter.meil_mitu.hkjson
 
+import com.twitter.meil_mitu.hkjson.objects.*
 import com.twitter.meil_mitu.hkjson.properties.IProperty
 import com.twitter.meil_mitu.hkjson.properties.JsonProperty
 import com.twitter.meil_mitu.hkjson.properties.OptionalJsonProperty
@@ -9,19 +10,25 @@ import org.json.JSONObject
 import java.util.*
 
 // have extensibility
-open class HKJson {
+open class HKJson(json: JSONObject? = null) : IJson {
 
     protected val properties = ArrayList<IProperty>()
 
+    init {
+        json?.apply {
+            parseJson(this)
+        }
+    }
+
     @Throws(JSONException::class)
-    fun parse(json: JSONObject) {
+    override fun parseJson(json: JSONObject) {
         for (p in properties) {
             p.init(json)
         }
     }
 
     @Throws(JSONException::class)
-    fun make(): JSONObject {
+    override fun makeJson(): JSONObject {
         val json = JSONObject()
         for (p in properties) {
             p.put(json)
@@ -37,185 +44,145 @@ open class HKJson {
     /*
     * String
     * */
-    internal fun jsonString(key: String): JsonProperty<String> {
+    override fun StringJson.Companion.json(key: String): JsonProperty<String> {
         return JsonProperty(key, initString, putString).addProperty()
     }
 
-    internal fun jsonOptionalString(key: String): OptionalJsonProperty<String> {
+    override fun StringJson.Companion.jsonOptional(key: String): OptionalJsonProperty<String> {
         return OptionalJsonProperty(key, initOptionalString, putOptionalString).addProperty()
     }
 
-    /*
-    * StringArray
-    * */
-    internal fun jsonStringArray(key: String): JsonProperty<Array<String>> {
+    override fun StringJson.Companion.jsonArray(key: String): JsonProperty<Array<String>> {
         return JsonProperty(key, initStringArray, putStringArray).addProperty()
     }
 
-    internal fun jsonOptionalStringArray(key: String):
+    override fun StringJson.Companion.jsonOptionalArray(key: String):
             OptionalJsonProperty<Array<String>> {
-        return OptionalJsonProperty(
-                key, initOptionalStringArray, putOptionalStringArray).addProperty()
+        return OptionalJsonProperty(key, initOptionalStringArray, putOptionalStringArray).addProperty()
     }
 
     /*
     * Boolean
     * */
-    internal fun jsonBoolean(key: String): JsonProperty<Boolean> {
+    override fun BooleanJson.Companion.json(key: String): JsonProperty<Boolean> {
         return JsonProperty(key, initBoolean, putBoolean).addProperty()
     }
 
-    internal fun jsonOptionalBoolean(key: String): OptionalJsonProperty<Boolean> {
+    override fun BooleanJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Boolean> {
         return OptionalJsonProperty(key, initOptionalBoolean, putOptionalBoolean).addProperty()
     }
 
-    /*
-    * BooleanArray
-    * */
-    internal fun jsonBooleanArray(key: String): JsonProperty<BooleanArray> {
+    override fun BooleanJson.Companion.jsonArray(key: String): JsonProperty<BooleanArray> {
         return JsonProperty(key, initBooleanArray, putBooleanArray).addProperty()
     }
 
-    internal fun jsonOptionalBooleanArray(key: String): OptionalJsonProperty<BooleanArray> {
-        return OptionalJsonProperty(
-                key, initOptionalBooleanArray, putOptionalBooleanArray).addProperty()
+    override fun BooleanJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<BooleanArray> {
+        return OptionalJsonProperty(key, initOptionalBooleanArray, putOptionalBooleanArray).addProperty()
     }
 
     /*
     * Int
     * */
-    internal fun jsonInt(key: String): JsonProperty<Int> {
+    override fun IntJson.Companion.json(key: String): JsonProperty<Int> {
         return JsonProperty(key, initInt, putInt).addProperty()
     }
 
-    internal fun jsonOptionalInt(key: String): OptionalJsonProperty<Int> {
+    override fun IntJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Int> {
         return OptionalJsonProperty(key, initOptionalInt, putOptionalInt).addProperty()
     }
 
-    /*
-    * IntArray
-    * */
-    internal fun jsonIntArray(key: String): JsonProperty<IntArray> {
+    override fun IntJson.Companion.jsonArray(key: String): JsonProperty<IntArray> {
         return JsonProperty(key, initIntArray, putIntArray).addProperty()
     }
 
-    internal fun jsonOptionalIntArray(key: String): OptionalJsonProperty<IntArray> {
-        return OptionalJsonProperty(
-                key, initOptionalIntArray, putOptionalIntArray).addProperty()
+    override fun IntJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<IntArray> {
+        return OptionalJsonProperty(key, initOptionalIntArray, putOptionalIntArray).addProperty()
     }
 
     /*
     * Long
     * */
-    internal fun jsonLong(key: String): JsonProperty<Long> {
+    override fun LongJson.Companion.json(key: String): JsonProperty<Long> {
         return JsonProperty(key, initLong, putLong).addProperty()
     }
 
-    internal fun jsonOptionalLong(key: String): OptionalJsonProperty<Long> {
+    override fun LongJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Long> {
         return OptionalJsonProperty(key, initOptionalLong, putOptionalLong).addProperty()
     }
 
-    /*
-    * LongArray
-    * */
-    internal fun jsonLongArray(key: String): JsonProperty<LongArray> {
+    override fun LongJson.Companion.jsonArray(key: String): JsonProperty<LongArray> {
         return JsonProperty(key, initLongArray, putLongArray).addProperty()
     }
 
-    internal fun jsonOptionalLongArray(key: String): OptionalJsonProperty<LongArray> {
-        return OptionalJsonProperty(
-                key, initOptionalLongArray, putOptionalLongArray).addProperty()
+    override fun LongJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<LongArray> {
+        return OptionalJsonProperty(key, initOptionalLongArray, putOptionalLongArray).addProperty()
     }
 
     /*
     * Double
     * */
-    internal fun jsonDouble(key: String): JsonProperty<Double> {
+    override fun DoubleJson.Companion.json(key: String): JsonProperty<Double> {
         return JsonProperty(key, initDouble, putDouble).addProperty()
     }
 
-    internal fun jsonOptionalDouble(key: String): OptionalJsonProperty<Double> {
+    override fun DoubleJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Double> {
         return OptionalJsonProperty(key, initOptionalDouble, putOptionalDouble).addProperty()
     }
 
-    /*
-    * DoubleArray
-    * */
-    internal fun jsonDoubleArray(key: String): JsonProperty<DoubleArray> {
+    override fun DoubleJson.Companion.jsonArray(key: String): JsonProperty<DoubleArray> {
         return JsonProperty(key, initDoubleArray, putDoubleArray).addProperty()
     }
 
-    internal fun jsonOptionalDoubleArray(key: String): OptionalJsonProperty<DoubleArray> {
-        return OptionalJsonProperty(
-                key, initOptionalDoubleArray, putOptionalDoubleArray).addProperty()
+    override fun DoubleJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<DoubleArray> {
+        return OptionalJsonProperty(key, initOptionalDoubleArray, putOptionalDoubleArray).addProperty()
     }
 
     /*
     * Date
     * */
-    internal fun jsonDate(key: String): JsonProperty<Date> {
+    override fun DateJson.Companion.json(key: String): JsonProperty<Date> {
         return JsonProperty(key, initDate, putDate).addProperty()
     }
 
-    internal fun jsonOptionalDate(key: String): OptionalJsonProperty<Date> {
+    override fun DateJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Date> {
         return OptionalJsonProperty(key, initOptionalDate, putOptionalDate).addProperty()
     }
 
-    /*
-    * DateArray
-    * */
-    internal fun jsonDateArray(key: String): JsonProperty<Array<Date>> {
+    override fun DateJson.Companion.jsonArray(key: String): JsonProperty<Array<Date>> {
         return JsonProperty(key, initDateArray, putDateArray).addProperty()
     }
 
-    internal fun jsonOptionalDateArray(key: String): OptionalJsonProperty<Array<Date>> {
-        return OptionalJsonProperty(
-                key, initOptionalDateArray, putOptionalDateArray).addProperty()
+    override fun DateJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<Date>> {
+        return OptionalJsonProperty(key, initOptionalDateArray, putOptionalDateArray).addProperty()
     }
 
     /*
     * JsonObject
     * */
-    internal fun<T : IJson> jsonObject(key: String, creator: () -> T):
-            JsonProperty<T> {
+    override fun<T : IJson> Json.Companion.json(key: String, creator: () -> T): JsonProperty<T> {
         return JsonProperty(key, initJsonObject(creator), putJsonObject()).addProperty()
     }
 
-    internal fun<T : IJson> jsonOptionalObject(key: String, creator: () -> T):
-            OptionalJsonProperty<T> {
-        return OptionalJsonProperty(
-                key, initOptionalJsonObject(creator), putOptionalJsonObject()).addProperty()
+    override fun<T : IJson> Json.Companion.jsonOptional(key: String, creator: () -> T): OptionalJsonProperty<T> {
+        return OptionalJsonProperty(key, initOptionalJsonObject(creator), putOptionalJsonObject()).addProperty()
     }
 
-    /*
-    * JsonArray
-    * */
-    internal fun<T : IJson> jsonArray(
-            key: String, creator: (Int) -> Array<T>):
-            JsonProperty<Array<T>> {
+    override fun<T : IJson> Json.Companion.jsonArray(key: String, creator: (Int) -> Array<T>): JsonProperty<Array<T>> {
         return JsonProperty(key, initJsonArray(creator), putJsonArray()).addProperty()
     }
 
-    internal fun<T : IJson> jsonOptionalArray(
-            key: String, creator: (Int) -> Array<T>):
-            OptionalJsonProperty<Array<T>> {
-        return OptionalJsonProperty(
-                key, initOptionalJsonArray(creator), putOptionalJsonArray()).addProperty()
+    override fun<T : IJson> Json.Companion.jsonOptionalArray(key: String, creator: (Int) -> Array<T>): OptionalJsonProperty<Array<T>> {
+        return OptionalJsonProperty(key, initOptionalJsonArray(creator), putOptionalJsonArray()).addProperty()
     }
 
     /*
     * Custom
     * */
-    internal fun<T> jsonCustom(key: String,
-                               initter: (JSONObject, String) -> T,
-                               putter: (JSONObject, String, T) -> Unit): JsonProperty<T> {
+    override fun<T> Json.Companion.jsonCustom(key: String, initter: (JSONObject, String) -> T, putter: (JSONObject, String, T) -> Unit): JsonProperty<T> {
         return JsonProperty(key, initter, putter).addProperty()
     }
 
-    internal fun<T> jsonOptionalCustom(key: String,
-                                       initter: (JSONObject, String) -> T?,
-                                       putter: (JSONObject, String, T?) -> Unit)
-            : OptionalJsonProperty<T> {
+    override fun<T> Json.Companion.jsonOptionalCustom(key: String, initter: (JSONObject, String) -> T?, putter: (JSONObject, String, T?) -> Unit): OptionalJsonProperty<T> {
         return OptionalJsonProperty(key, initter, putter).addProperty()
     }
 
@@ -286,7 +253,7 @@ open class HKJson {
                 (JSONObject, String) -> T {
             return {
                 json, key ->
-                creator().apply { this.hkjson.parse(json.getJSONObject(key)!!) }
+                creator().apply { this.parseJson(json.getJSONObject(key)!!) }
             }
         }
 
@@ -297,7 +264,7 @@ open class HKJson {
                 val ar = json.getJSONArray(key);
                 creator(ar.length()).apply {
                     for (i in 0..ar.length() - 1) {
-                        this[i].hkjson.parse(ar.getJSONObject(i)!!)
+                        this[i].parseJson(ar.getJSONObject(i)!!)
                     }
                 }
             }
@@ -567,7 +534,7 @@ open class HKJson {
 
         private fun <T : IJson> putJsonObject(): (JSONObject, String, T) -> Unit = {
             json, key, value ->
-            json.put(key, value.hkjson.make())
+            json.put(key, value.makeJson())
         }
 
         private fun <T : IJson> putOptionalJsonObject():
@@ -580,7 +547,7 @@ open class HKJson {
             json, key, value ->
             val ar = JSONArray().apply {
                 for (i in 0..value.size - 1) {
-                    this.put(i, value[i].hkjson.make())
+                    this.put(i, value[i].makeJson())
                 }
             };
             json.put(key, ar)

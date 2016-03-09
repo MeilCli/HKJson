@@ -1,6 +1,5 @@
 package com.twitter.meil_mitu.hkjson
 
-import com.twitter.meil_mitu.kjson.StringData
 import junit.framework.TestCase
 import org.json.JSONArray
 import org.json.JSONObject
@@ -20,14 +19,14 @@ class DataTest : TestCase() {
             this.put(a.testOptionalStringValKey, testStringVal1)
             this.put(a.testOptionalStringVarKey, testStringVar1)
         }
-        a.hkjson.parse(json)
+        a.parseJson(json)
         assertEquals(a.testStringVal, testStringVal1)
         assertEquals(a.testStringVar, testStringVar1)
         assertEquals(a.testOptionalStringVal, testStringVal1)
         assertEquals(a.testOptionalStringVar, testStringVar1)
 
         // json make test
-        val b = StringData(a.hkjson.make())
+        val b = StringData(a.makeJson())
         assertEquals(b.testStringVal, testStringVal1)
         assertEquals(b.testStringVar, testStringVar1)
         assertEquals(b.testOptionalStringVal, testStringVal1)
@@ -36,21 +35,21 @@ class DataTest : TestCase() {
         // value change test
         b.testStringVar = testStringVar2
         b.testOptionalStringVar = testStringVar2
-        val c = StringData(b.hkjson.make())
+        val c = StringData(b.makeJson())
         assertEquals(c.testStringVal, testStringVal1)
         assertEquals(c.testStringVar, testStringVar2)
         assertEquals(c.testOptionalStringVal, testStringVal1)
         assertEquals(c.testOptionalStringVar, testStringVar2)
 
         // null value test
-        val d = StringData(c.hkjson.make().apply {
+        val d = StringData(c.makeJson().apply {
             this.remove(c.testOptionalStringValKey)
             this.remove(c.testOptionalStringVarKey)
         })
         assertEquals(d.testOptionalStringVal, null)
         assertEquals(d.testOptionalStringVar, null)
         assertEquals(
-                d.hkjson.make().let {
+                d.makeJson().let {
                     it.isNull(d.testOptionalStringValKey) && it.isNull(d.testOptionalStringVarKey)
                 },
                 true)
@@ -72,14 +71,14 @@ class DataTest : TestCase() {
                 this.put(stringData.testOptionalStringVarKey, testStringVar1)
             })
         }
-        jsonObjectData1.hkjson.parse(json)
+        jsonObjectData1.parseJson(json)
         assertEquals(jsonObjectData1.testJsonObjectVar.testStringVal, testStringVal1)
         assertEquals(jsonObjectData1.testJsonObjectVar.testStringVar, testStringVar1)
         assertEquals(jsonObjectData1.testJsonObjectVar.testOptionalStringVal, testStringVal1)
         assertEquals(jsonObjectData1.testJsonObjectVar.testOptionalStringVar, testStringVar1)
 
         // json make test
-        val jsonObjectData2 = JsonObjectData(jsonObjectData1.hkjson.make())
+        val jsonObjectData2 = JsonObjectData(jsonObjectData1.makeJson())
         assertEquals(jsonObjectData2.testJsonObjectVar.testStringVal, testStringVal1)
         assertEquals(jsonObjectData2.testJsonObjectVar.testStringVar, testStringVar1)
         assertEquals(jsonObjectData2.testJsonObjectVar.testOptionalStringVal, testStringVal1)
@@ -88,7 +87,7 @@ class DataTest : TestCase() {
         // value change test
         jsonObjectData2.testJsonObjectVar.testStringVar = testStringVar2
         jsonObjectData2.testJsonObjectVar.testOptionalStringVar = testStringVar2
-        val jsonObjectData3 = JsonObjectData(jsonObjectData2.hkjson.make())
+        val jsonObjectData3 = JsonObjectData(jsonObjectData2.makeJson())
         assertEquals(jsonObjectData3.testJsonObjectVar.testStringVal, testStringVal1)
         assertEquals(jsonObjectData3.testJsonObjectVar.testStringVar, testStringVar2)
         assertEquals(jsonObjectData3.testJsonObjectVar.testOptionalStringVal, testStringVal1)
@@ -119,7 +118,7 @@ class DataTest : TestCase() {
                 })
             })
         }
-        jsonArrayData1.hkjson.parse(json)
+        jsonArrayData1.parseJson(json)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testStringVal, testStringVal1)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testStringVar, testStringVar1)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testOptionalStringVal, testStringVal1)
@@ -130,7 +129,7 @@ class DataTest : TestCase() {
         assertEquals(jsonArrayData1.testJsonArrayVar[1].testOptionalStringVar, testStringVar2)
 
         // json make test
-        val jsonArrayData2 = JsonArrayData(jsonArrayData1.hkjson.make())
+        val jsonArrayData2 = JsonArrayData(jsonArrayData1.makeJson())
         assertEquals(jsonArrayData2.testJsonArrayVar[0].testStringVal, testStringVal1)
         assertEquals(jsonArrayData2.testJsonArrayVar[0].testStringVar, testStringVar1)
         assertEquals(jsonArrayData2.testJsonArrayVar[0].testOptionalStringVal, testStringVal1)

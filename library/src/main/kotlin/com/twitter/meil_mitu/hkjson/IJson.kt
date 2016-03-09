@@ -1,5 +1,6 @@
 package com.twitter.meil_mitu.hkjson
 
+import com.twitter.meil_mitu.hkjson.objects.*
 import com.twitter.meil_mitu.hkjson.properties.JsonProperty
 import com.twitter.meil_mitu.hkjson.properties.OptionalJsonProperty
 import org.json.JSONObject
@@ -7,208 +8,98 @@ import java.util.*
 
 interface IJson {
 
-    val hkjson: HKJson
+    companion object
 
-    fun parseJson(json :JSONObject){
-        hkjson.parse(json)
-    }
+    fun parseJson(json: JSONObject)
 
-    fun makeJson() = hkjson.make()
+    fun makeJson(): JSONObject
 
     /*
     * String
     * */
-    fun jsonString(key: String): JsonProperty<String> {
-        return hkjson.jsonString(key)
-    }
+    fun StringJson.Companion.json(key: String): JsonProperty<String>
 
-    fun jsonOptionalString(key: String): OptionalJsonProperty<String> {
-        return hkjson.jsonOptionalString(key)
-    }
-
-    /*
-    * StringArray
-    * */
-    fun jsonStringArray(key: String): JsonProperty<Array<String>> {
-        return hkjson.jsonStringArray(key)
-    }
-
-    fun jsonOptionalStringArray(key: String): OptionalJsonProperty<Array<String>> {
-        return hkjson.jsonOptionalStringArray(key)
-    }
+    fun StringJson.Companion.jsonOptional(key: String): OptionalJsonProperty<String>
+    fun StringJson.Companion.jsonArray(key: String): JsonProperty<Array<String>>
+    fun StringJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<String>>
 
     /*
     * Boolean
     * */
-    fun jsonBoolean(key: String): JsonProperty<Boolean> {
-        return hkjson.jsonBoolean(key)
-    }
+    fun BooleanJson.Companion.json(key: String): JsonProperty<Boolean>
 
-    fun jsonOptionalBoolean(key: String): OptionalJsonProperty<Boolean> {
-        return hkjson.jsonOptionalBoolean(key)
-    }
-
-    /*
-    * BooleanArray
-    * */
-    fun jsonBooleanArray(key: String): JsonProperty<BooleanArray> {
-        return hkjson.jsonBooleanArray(key)
-    }
-
-    fun jsonOptionalBooleanArray(key: String): OptionalJsonProperty<BooleanArray> {
-        return hkjson.jsonOptionalBooleanArray(key)
-    }
+    fun BooleanJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Boolean>
+    fun BooleanJson.Companion.jsonArray(key: String): JsonProperty<BooleanArray>
+    fun BooleanJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<BooleanArray>
 
     /*
     * Int
     * */
-    fun jsonInt(key: String): JsonProperty<Int> {
-        return hkjson.jsonInt(key)
-    }
+    fun IntJson.Companion.json(key: String): JsonProperty<Int>
 
-    fun jsonOptionalInt(key: String): OptionalJsonProperty<Int> {
-        return hkjson.jsonOptionalInt(key)
-    }
-
-    /*
-    * IntArray
-    * */
-    fun jsonIntArray(key: String): JsonProperty<IntArray> {
-        return hkjson.jsonIntArray(key)
-    }
-
-    fun jsonOptionalIntArray(key: String): OptionalJsonProperty<IntArray> {
-        return hkjson.jsonOptionalIntArray(key)
-    }
+    fun IntJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Int>
+    fun IntJson.Companion.jsonArray(key: String): JsonProperty<IntArray>
+    fun IntJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<IntArray>
 
     /*
     * Long
     * */
-    fun jsonLong(key: String): JsonProperty<Long> {
-        return hkjson.jsonLong(key)
-    }
+    fun LongJson.Companion.json(key: String): JsonProperty<Long>
 
-    fun jsonOptionalLong(key: String): OptionalJsonProperty<Long> {
-        return hkjson.jsonOptionalLong(key)
-    }
-
-    /*
-    * LongArray
-    * */
-    fun jsonLongArray(key: String): JsonProperty<LongArray> {
-        return hkjson.jsonLongArray(key)
-    }
-
-    fun jsonOptionalLongArray(key: String): OptionalJsonProperty<LongArray> {
-        return hkjson.jsonOptionalLongArray(key)
-    }
+    fun LongJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Long>
+    fun LongJson.Companion.jsonArray(key: String): JsonProperty<LongArray>
+    fun LongJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<LongArray>
 
     /*
     * Double
     * */
-    fun jsonDouble(key: String): JsonProperty<Double> {
-        return hkjson.jsonDouble(key)
-    }
+    fun DoubleJson.Companion.json(key: String): JsonProperty<Double>
 
-    fun jsonOptionalDouble(key: String): OptionalJsonProperty<Double> {
-        return hkjson.jsonOptionalDouble(key)
-    }
-
-    /*
-    * DoubleArray
-    * */
-    fun jsonDoubleArray(key: String): JsonProperty<DoubleArray> {
-        return hkjson.jsonDoubleArray(key)
-    }
-
-    fun jsonOptionalDoubleArray(key: String): OptionalJsonProperty<DoubleArray> {
-        return hkjson.jsonOptionalDoubleArray(key)
-    }
+    fun DoubleJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Double>
+    fun DoubleJson.Companion.jsonArray(key: String): JsonProperty<DoubleArray>
+    fun DoubleJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<DoubleArray>
 
     /*
     * Date
     * */
-    fun jsonDate(key: String): JsonProperty<Date> {
-        return hkjson.jsonDate(key)
-    }
+    fun DateJson.Companion.json(key: String): JsonProperty<Date>
 
-    fun jsonOptionalDate(key: String): OptionalJsonProperty<Date> {
-        return hkjson.jsonOptionalDate(key)
-    }
-
-    /*
-    * DateArray
-    * */
-    fun jsonDateArray(key: String): JsonProperty<Array<Date>> {
-        return hkjson.jsonDateArray(key)
-    }
-
-    fun jsonOptionalDateArray(key: String): OptionalJsonProperty<Array<Date>> {
-        return hkjson.jsonOptionalDateArray(key)
-    }
+    fun DateJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Date>
+    fun DateJson.Companion.jsonArray(key: String): JsonProperty<Array<Date>>
+    fun DateJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<Date>>
 
     /*
     * JsonObject
     * */
-    fun<T : IJson> jsonObject(key: String, creator: () -> T):
-            JsonProperty<T> {
-        return hkjson.jsonObject(key, creator)
-    }
+    fun<T : IJson> Json.Companion.json(key: String, creator: () -> T): JsonProperty<T>
 
-    fun<T : IJson> IJsonObject<T>.jsonObject(key: String):
-            JsonProperty<T> {
-        return hkjson.jsonObject(key, this.creator())
-    }
-
-    fun<T : IJson> jsonOptionalObject(key: String, creator: () -> T):
-            OptionalJsonProperty<T> {
-        return hkjson.jsonOptionalObject(key, creator)
-    }
-
-    fun<T : IJson> IJsonObject<T>.jsonOptionalObject(key: String):
-            OptionalJsonProperty<T> {
-        return hkjson.jsonOptionalObject(key, this.creator())
-    }
-
-    /*
-    * JsonArray
-    * */
-    fun<T : IJson> jsonArray(
-            key: String, creator: (Int) -> Array<T>):
-            JsonProperty<Array<T>> {
-        return hkjson.jsonArray(key, creator)
-    }
-
-    fun<T : IJson> IJsonArray<T>.jsonArray(key: String):
-            JsonProperty<Array<T>> {
-        return hkjson.jsonArray(key, this.arrayCreator())
-    }
-
-    fun<T : IJson> jsonOptionalArray(
-            key: String, creator: (Int) -> Array<T>):
-            OptionalJsonProperty<Array<T>> {
-        return hkjson.jsonOptionalArray(key, creator)
-    }
-
-    fun<T : IJson> IJsonArray<T>.jsonOptionalArray(key: String):
-            OptionalJsonProperty<Array<T>> {
-        return hkjson.jsonOptionalArray(key, this.arrayCreator())
-    }
+    fun<T : IJson> Json.Companion.jsonOptional(key: String, creator: () -> T): OptionalJsonProperty<T>
+    fun<T : IJson> Json.Companion.jsonArray(key: String, creator: (Int) -> Array<T>): JsonProperty<Array<T>>
+    fun<T : IJson> Json.Companion.jsonOptionalArray(key: String, creator: (Int) -> Array<T>): OptionalJsonProperty<Array<T>>
 
     /*
     * Custom
     * */
-    fun<T> jsonCustom(key: String,
-                      initter: (JSONObject, String) -> T,
-                      putter: (JSONObject, String, T) -> Unit): JsonProperty<T> {
-        return hkjson.jsonCustom(key, initter, putter)
+    fun<T> Json.Companion.jsonCustom(key: String, initter: (JSONObject, String) -> T, putter: (JSONObject, String, T) -> Unit): JsonProperty<T>
+
+    fun<T> Json.Companion.jsonOptionalCustom(key: String, initter: (JSONObject, String) -> T?, putter: (JSONObject, String, T?) -> Unit): OptionalJsonProperty<T>
+
+    /*
+    * Extensions
+    * */
+    fun<T : IJson> IJsonObject<T>.jsonObject(key: String): JsonProperty<T> {
+        return Json.json(key, this.creator())
     }
 
-    fun<T> jsonOptionalCustom(key: String,
-                              initter: (JSONObject, String) -> T?,
-                              putter: (JSONObject, String, T?) -> Unit):
-            OptionalJsonProperty<T> {
-        return hkjson.jsonOptionalCustom(key, initter, putter)
+    fun<T : IJson> IJsonObject<T>.jsonOptionalObject(key: String): OptionalJsonProperty<T> {
+        return Json.jsonOptional(key, this.creator())
     }
 
+    fun<T : IJson> IJsonArray<T>.jsonArray(key: String): JsonProperty<Array<T>> {
+        return Json.jsonArray(key, this.arrayCreator())
+    }
+
+    fun<T : IJson> IJsonArray<T>.jsonOptionalArray(key: String): OptionalJsonProperty<Array<T>> {
+        return Json.jsonOptionalArray(key, this.arrayCreator())
+    }
 }

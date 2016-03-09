@@ -4,25 +4,19 @@ import com.twitter.meil_mitu.hkjson.HKJson
 import com.twitter.meil_mitu.hkjson.IJson
 import com.twitter.meil_mitu.hkjson.IJsonArray
 import com.twitter.meil_mitu.hkjson.IJsonObject
+import com.twitter.meil_mitu.hkjson.objects.DateJson
+import com.twitter.meil_mitu.hkjson.objects.StringJson
 import org.json.JSONObject
 import java.util.*
 
-class Child : IJson {
+class Child(json: JSONObject? = null) : IJson by HKJson(json) {
 
-    override val hkjson = HKJson()
 
-    val name: String by jsonString("child_name")
-    val birthDay: Date by jsonDate("child_birth_day")
-    var parentName: String? by jsonOptionalString("parent_name")
+    val name: String by StringJson.json("child_name")
+    val birthDay: Date by DateJson.json("child_birth_day")
+    var parentName: String? by StringJson.jsonOptional("parent_name")
 
     // for IJsonObject, IJsonArray interface and creators
-    constructor() {
-    }
-
-    constructor(obj: JSONObject) {
-        hkjson.parse(obj)
-    }
-
     companion object : IJsonObject<Child>, IJsonArray<Child> {
 
         override fun creator(): () -> Child {

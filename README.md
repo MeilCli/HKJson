@@ -9,30 +9,28 @@ This library is helper of JSONObject and JSONArray
 	}
 	
 	dependencies {
-		compile 'meilcli:hkjson:1.0.3'
+		compile 'meilcli:hkjson:1.1.0'
 	}
 
 #### Usage
 	import com.twitter.meil_mitu.hkjson.HKJson
 	import com.twitter.meil_mitu.hkjson.IJson
+	import com.twitter.meil_mitu.hkjson.IJsonArray
+	import com.twitter.meil_mitu.hkjson.objects.StringJson
 	import org.json.JSONObject
-	
-	class Data : IJson {
-	
-		override val hkjson = HKJson()
-	
-		val stringVal: String by jsonString("[key]")
-		var stringVar: String by jsonString("[key]")
-		val optionalStringVal: String? by jsonOptionalString("[key]")
-		var optionalStringVar: String? by jsonOptionalString("[key]")
-	
-		constructor(json: JSONObject) {
-			hkjson.parse(json)
-		}
+
+	class Data(json:JSONObject? =null) : IJson by HKJson(json){
+
+    	val testStringVal:String by StringJson.json("test_string_val")
+    	var testStringVar by StringJson.json("test_string_var") // type is omitted
+    	val testOptionalStringVal: String? by StringJson.jsonOptional("test_optional_string_val")
+    	var testOptionalStringVar by StringJson.jsonOptional("test_optional_string_var")
+
 	}
 	
 
-HKJson can map type: *String*, *Array\<String\>*, *Boolean*, *BooleanArray*, *Int*, *IntArray*, *Long*, *LongArray*, *Double*, *DoubleArray*, *Date*, *Array\<Date\>*, *T : IJson*, *Array\<T : IJson\>*  
+HKJson can map type: *String*, *Boolean*, *Int*, *Long*, *Double*, *Date*, *T : IJson*  
+ok *val*, *var*, *Optional*, *Array*, *ArrayOptional*  
 other type is OK to use custom method  
 [for example](https://github.com/MeilCli/HKJson/tree/master/library/src/androidTest/kotlin/com/twitter/meil_mitu/hkjson/example)  
   
