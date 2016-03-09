@@ -9,7 +9,7 @@ This library is helper of JSONObject and JSONArray
 	}
 	
 	dependencies {
-		compile 'meilcli:hkjson:1.0.1'
+		compile 'meilcli:hkjson:1.0.3'
 	}
 
 #### Usage

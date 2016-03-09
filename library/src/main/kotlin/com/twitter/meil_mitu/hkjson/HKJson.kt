@@ -209,14 +209,14 @@ open class HKJson {
     internal fun<T> jsonCustom(key: String,
                                initter: (JSONObject, String) -> T,
                                putter: (JSONObject, String, T) -> Unit): JsonProperty<T> {
-        return JsonProperty(key, initter, putter)
+        return JsonProperty(key, initter, putter).addProperty()
     }
 
     internal fun<T> jsonOptionalCustom(key: String,
                                        initter: (JSONObject, String) -> T?,
                                        putter: (JSONObject, String, T?) -> Unit)
             : OptionalJsonProperty<T> {
-        return OptionalJsonProperty(key, initter, putter)
+        return OptionalJsonProperty(key, initter, putter).addProperty()
     }
 
     companion object {
