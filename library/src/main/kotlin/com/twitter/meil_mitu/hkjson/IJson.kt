@@ -17,8 +17,8 @@ interface IJson {
     /*
     * String
     * */
-    fun StringJson.Companion.json(key: String): JsonProperty<String>
 
+    fun StringJson.Companion.json(key: String): JsonProperty<String>
     fun StringJson.Companion.jsonOptional(key: String): OptionalJsonProperty<String>
     fun StringJson.Companion.jsonArray(key: String): JsonProperty<Array<String>>
     fun StringJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<String>>
@@ -26,8 +26,8 @@ interface IJson {
     /*
     * Boolean
     * */
-    fun BooleanJson.Companion.json(key: String): JsonProperty<Boolean>
 
+    fun BooleanJson.Companion.json(key: String): JsonProperty<Boolean>
     fun BooleanJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Boolean>
     fun BooleanJson.Companion.jsonArray(key: String): JsonProperty<BooleanArray>
     fun BooleanJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<BooleanArray>
@@ -35,6 +35,7 @@ interface IJson {
     /*
     * Int
     * */
+
     fun IntJson.Companion.json(key: String): JsonProperty<Int>
 
     fun IntJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Int>
@@ -44,8 +45,8 @@ interface IJson {
     /*
     * Long
     * */
-    fun LongJson.Companion.json(key: String): JsonProperty<Long>
 
+    fun LongJson.Companion.json(key: String): JsonProperty<Long>
     fun LongJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Long>
     fun LongJson.Companion.jsonArray(key: String): JsonProperty<LongArray>
     fun LongJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<LongArray>
@@ -53,8 +54,8 @@ interface IJson {
     /*
     * Double
     * */
-    fun DoubleJson.Companion.json(key: String): JsonProperty<Double>
 
+    fun DoubleJson.Companion.json(key: String): JsonProperty<Double>
     fun DoubleJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Double>
     fun DoubleJson.Companion.jsonArray(key: String): JsonProperty<DoubleArray>
     fun DoubleJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<DoubleArray>
@@ -62,8 +63,8 @@ interface IJson {
     /*
     * Date
     * */
-    fun DateJson.Companion.json(key: String): JsonProperty<Date>
 
+    fun DateJson.Companion.json(key: String): JsonProperty<Date>/**/
     fun DateJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Date>
     fun DateJson.Companion.jsonArray(key: String): JsonProperty<Array<Date>>
     fun DateJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<Date>>
@@ -71,8 +72,8 @@ interface IJson {
     /*
     * JsonObject
     * */
-    fun<T : IJson> Json.Companion.json(key: String, creator: () -> T): JsonProperty<T>
 
+    fun<T : IJson> Json.Companion.json(key: String, creator: () -> T): JsonProperty<T>
     fun<T : IJson> Json.Companion.jsonOptional(key: String, creator: () -> T): OptionalJsonProperty<T>
     fun<T : IJson> Json.Companion.jsonArray(key: String, creator: (Int) -> Array<T>): JsonProperty<Array<T>>
     fun<T : IJson> Json.Companion.jsonOptionalArray(key: String, creator: (Int) -> Array<T>): OptionalJsonProperty<Array<T>>
@@ -80,8 +81,8 @@ interface IJson {
     /*
     * Custom
     * */
-    fun<T> Json.Companion.jsonCustom(key: String, initter: (JSONObject, String) -> T, putter: (JSONObject, String, T) -> Unit): JsonProperty<T>
 
+    fun<T> Json.Companion.jsonCustom(key: String, initter: (JSONObject, String) -> T, putter: (JSONObject, String, T) -> Unit): JsonProperty<T>
     fun<T> Json.Companion.jsonOptionalCustom(key: String, initter: (JSONObject, String) -> T?, putter: (JSONObject, String, T?) -> Unit): OptionalJsonProperty<T>
 
     /*
