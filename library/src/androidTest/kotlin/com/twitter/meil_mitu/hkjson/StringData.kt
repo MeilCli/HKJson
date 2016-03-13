@@ -5,7 +5,6 @@ import org.json.JSONObject
 
 class StringData(json: JSONObject? = null) : IJson by HKJson(json) {
 
-
     val testStringValKey = "test_string_val"
     val testStringVal: String by StringJson.json(testStringValKey)
     val testStringVarKey = "test_string_var"

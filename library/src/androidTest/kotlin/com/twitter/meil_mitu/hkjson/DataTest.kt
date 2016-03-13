@@ -3,6 +3,7 @@ package com.twitter.meil_mitu.hkjson
 import junit.framework.TestCase
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 
 class DataTest : TestCase() {
 
@@ -138,5 +139,35 @@ class DataTest : TestCase() {
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testStringVar, testStringVar2)
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testOptionalStringVal, testStringVal1)
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testOptionalStringVar, testStringVar2)
+    }
+
+    fun testData() {
+        val data1 = Data()
+        data1.s1 = "s1"
+        data1.s2 = "s2"
+        data1.s3 = arrayOf("s3")
+        data1.s4 = arrayOf("s4")
+        data1.b1 = true
+        data1.b2 = true
+        data1.b3 = booleanArrayOf(true)
+        data1.b4 = booleanArrayOf(true)
+        data1.i1 = 1
+        data1.i2 = 2
+        data1.i3 = intArrayOf(3)
+        data1.i4 = intArrayOf(4)
+        data1.l1 = 1
+        data1.l2 = 2
+        data1.l3 = longArrayOf(3)
+        data1.l4 = longArrayOf(4)
+        data1.d1 = 1.0
+        data1.d2 = 2.0
+        data1.d3 = doubleArrayOf(3.0)
+        data1.d4 = doubleArrayOf(4.0)
+        data1.da1 = Date()
+        data1.da2 = Date()
+        data1.da3 = arrayOf(Date())
+        data1.da4 = arrayOf(Date())
+        val data2 = Data(data1.makeJson())
+        assertEquals(data1, data2)
     }
 }
