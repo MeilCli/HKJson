@@ -14,6 +14,8 @@ interface IJson {
 
     fun makeJson(): JSONObject
 
+    fun clearJsonCache()
+
     /*
     * String
     * */

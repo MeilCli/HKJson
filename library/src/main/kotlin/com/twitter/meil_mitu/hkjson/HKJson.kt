@@ -13,11 +13,10 @@ import java.util.*
 open class HKJson(json: JSONObject? = null) : IJson {
 
     protected val properties = ArrayList<IProperty>()
+    protected var json: JSONObject?
 
     init {
-        json?.apply {
-            parseJson(this)
-        }
+        this.json = json
     }
 
     @Throws(JSONException::class)
@@ -36,8 +35,13 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return json
     }
 
+    override fun clearJsonCache() {
+        json = null
+    }
+
     protected fun <T : IProperty> T.addProperty(): T {
         properties.add(this)
+        if (json != null) this.init(json!!)
         return this
     }
 
