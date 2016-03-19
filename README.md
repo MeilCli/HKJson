@@ -7,11 +7,11 @@ This library is helper of JSONObject and JSONArray
 #### gradle
 	repositories {
 	    mavenCentral()
-	    maven { url "https://raw.github.com/MeilCli/HKJson/master/library/repository" }
+	    maven { url "http://dl.bintray.com/meilcli/maven" }
 	}
 	
 	dependencies {
-		compile 'meilcli:hkjson:1.1.1'
+		compile 'meilcli:hkjson:1.1.2'
 	}
 
 #### Usage
