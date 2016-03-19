@@ -1,4 +1,4 @@
-package com.twitter.meil_mitu.hkjson;
+package net.meilcli.hkjson;
 
 import org.junit.Test;
 

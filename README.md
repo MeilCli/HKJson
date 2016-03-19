@@ -15,10 +15,10 @@ This library is helper of JSONObject and JSONArray
 	}
 
 #### Usage
-	import com.twitter.meil_mitu.hkjson.HKJson
-	import com.twitter.meil_mitu.hkjson.IJson
-	import com.twitter.meil_mitu.hkjson.IJsonArray
-	import com.twitter.meil_mitu.hkjson.objects.StringJson
+	import net.meilcli.hkjson.HKJson
+	import net.meilcli.hkjson.IJson
+	import net.meilcli.hkjson.IJsonArray
+	import net.meilcli.hkjson.objects.StringJson
 	import org.json.JSONObject
 
 	class Data(json:JSONObject? =null) : IJson by HKJson(json){
