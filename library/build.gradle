@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 23
@@ -71,7 +72,7 @@ bintray {
         vcsUrl = gitUrl
         websiteUrl = siteUrl
         issueTrackerUrl = siteUrl + '/issues'
-        labels = ['android']
+        labels = ['android', 'kotlin']
         version {
             name = bintray_ver
             desc = bintray_ver_desc
@@ -107,4 +108,17 @@ install {
             }
         }
     }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
 }
