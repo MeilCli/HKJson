@@ -2,14 +2,9 @@
 A Json library for Android 4.0.3 and upper in Kotlin  
 This library is helper of JSONObject and JSONArray
 
-[日本語解説](http://meilcli.github.io/product/hkjson.html)
+[日本語解説](http://meilcli.net/product/hkjson.html)
 
-#### gradle
-	repositories {
-	    mavenCentral()
-	    maven { url "http://dl.bintray.com/meilcli/maven" }
-	}
-	
+#### gradle	
 	dependencies {
 		compile 'meilcli:hkjson:1.1.2'
 	}
