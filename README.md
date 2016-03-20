@@ -45,6 +45,4 @@ get JSONObject :
 
 This source is The MIT License.
 
-using [The Kotlin Standard Library][Kotlin_stdlib] [Apache License, Version 2.0][Apache]
-[Apache]: http://www.apache.org/licenses/LICENSE-2.0
-[Kotlin_stdlib]: https://github.com/JetBrains/kotlin/tree/master/libraries/stdlib
+using [The Kotlin Standard Library](https://github.com/JetBrains/kotlin/tree/master/libraries/stdlib) : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
