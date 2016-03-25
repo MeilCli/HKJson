@@ -122,12 +122,20 @@ interface IHKJson {
         return HKJsonJson.json(key, this.creator())
     }
 
+    fun<T : IHKJson> IJsonObject<T>.json(key: String, default: T): JsonProperty<T> {
+        return HKJsonJson.json(key, this.creator(), default)
+    }
+
     fun<T : IHKJson> IJsonOptionalObject<T>.json(key: String): OptionalJsonProperty<T> {
         return HKJsonOptionalJson.json(key, this.creator())
     }
 
     fun<T : IHKJson> IJsonArray2<T>.json(key: String): JsonProperty<Array<T>> {
         return HKJsonArrayJson.json(key, this.arrayCreator())
+    }
+
+    fun<T : IHKJson> IJsonArray2<T>.json(key: String, default: Array<T>): JsonProperty<Array<T>> {
+        return HKJsonArrayJson.json(key, this.arrayCreator(), default)
     }
 
     fun<T : IHKJson> IJsonOptionalArray<T>.json(key: String): OptionalJsonProperty<Array<T>> {
