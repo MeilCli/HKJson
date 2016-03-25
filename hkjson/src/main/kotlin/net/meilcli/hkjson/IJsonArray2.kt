@@ -1,6 +1,6 @@
 package net.meilcli.hkjson
 
-interface IJsonArray<T : IHKJson> {
+interface IJsonArray2<T : IHKJson> {
 
     fun arrayCreator(): (Int) -> Array<T>
 }

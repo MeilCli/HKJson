@@ -1,39 +1,38 @@
 package net.meilcli.hkjson
 
-import net.meilcli.hkjson.objects.*
 import org.json.JSONObject
 import java.util.*
 
-class Data(json: JSONObject? = null) : IJson by HKJson(json) {
-    var s1 by StringJson.json("s1")
-    var s2 by StringJson.jsonOptional("s2")
-    var s3 by StringJson.jsonArray("s3")
-    var s4 by StringJson.jsonOptionalArray("s4")
+class Data(json: JSONObject? = null) : IHKJson by HKJson(json) {
+    var s1 by string.json("s1")
+    var s2 by string.optional.json("s2")
+    var s3 by string.array.json("s3")
+    var s4 by string.array.optional.json("s4")
 
-    var b1 by BooleanJson.json("b1")
-    var b2 by BooleanJson.jsonOptional("b2")
-    var b3 by BooleanJson.jsonArray("b3")
-    var b4 by BooleanJson.jsonOptionalArray("b4")
+    var b1 by boolean.json("b1")
+    var b2 by boolean.optional.json("b2")
+    var b3 by boolean.array.json("b3")
+    var b4 by boolean.array.optional.json("b4")
 
-    var i1 by IntJson.json("i1")
-    var i2 by IntJson.jsonOptional("i2")
-    var i3 by IntJson.jsonArray("i3")
-    var i4 by IntJson.jsonOptionalArray("i4")
+    var i1 by int.json("i1")
+    var i2 by int.optional.json("i2")
+    var i3 by int.array.json("i3")
+    var i4 by int.array.optional.json("i4")
 
-    var l1 by LongJson.json("l1")
-    var l2 by LongJson.jsonOptional("l2")
-    var l3 by LongJson.jsonArray("l3")
-    var l4 by LongJson.jsonOptionalArray("l4")
+    var l1 by long.json("l1")
+    var l2 by long.optional.json("l2")
+    var l3 by long.array.json("l3")
+    var l4 by long.array.optional.json("l4")
 
-    var d1 by DoubleJson.json("d1")
-    var d2 by DoubleJson.jsonOptional("d2")
-    var d3 by DoubleJson.jsonArray("d3")
-    var d4 by DoubleJson.jsonOptionalArray("d4")
+    var d1 by double.json("d1")
+    var d2 by double.optional.json("d2")
+    var d3 by double.array.json("d3")
+    var d4 by double.array.optional.json("d4")
 
-    var da1 by DateJson.json("da1")
-    var da2 by DateJson.jsonOptional("da2")
-    var da3 by DateJson.jsonArray("da3")
-    var da4 by DateJson.jsonOptionalArray("da4")
+    var da1 by date.json("da1")
+    var da2 by date.optional.json("da2")
+    var da3 by date.array.json("da3")
+    var da4 by date.array.optional.json("da4")
 
     override fun equals(other: Any?): Boolean {
         if (other == null) return false

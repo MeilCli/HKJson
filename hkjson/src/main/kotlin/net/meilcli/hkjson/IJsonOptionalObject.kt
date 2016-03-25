@@ -1,6 +1,6 @@
 package net.meilcli.hkjson
 
-interface IJsonObject<T : IHKJson> {
+interface IJsonOptionalObject <T : IHKJson> {
 
     fun creator(): () -> T
 }
