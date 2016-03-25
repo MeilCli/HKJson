@@ -10,6 +10,10 @@ class OptionalJsonProperty<T>(
         putter: (JSONObject, String, T?) -> Unit) :
         JsonProperty<T?>(key, initter, putter) {
 
+    override fun init(json: JSONObject) {
+        value = initter(json, key)
+    }
+
     override fun put(json: JSONObject) {
         putter(json, key, value)
     }

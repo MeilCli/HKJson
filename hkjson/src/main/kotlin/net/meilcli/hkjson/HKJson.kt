@@ -68,6 +68,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initString, putString).addProperty()
     }
 
+    override fun StringJson.Companion.json(key: String, default: String) = json(key).apply { value = default }
+
     override fun StringJson.Companion.jsonOptional(key: String): OptionalJsonProperty<String> {
         return OptionalJsonProperty(key, initOptionalString, putOptionalString).addProperty()
     }
@@ -75,6 +77,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun StringJson.Companion.jsonArray(key: String): JsonProperty<Array<String>> {
         return JsonProperty(key, initStringArray, putStringArray).addProperty()
     }
+
+    override fun StringJson.Companion.jsonArray(key: String, default: Array<String>) = jsonArray(key).apply { value = default }
 
     override fun StringJson.Companion.jsonOptionalArray(key: String):
             OptionalJsonProperty<Array<String>> {
@@ -88,6 +92,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initBoolean, putBoolean).addProperty()
     }
 
+    override fun BooleanJson.Companion.json(key: String, default: Boolean) = json(key).apply { value = default }
+
     override fun BooleanJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Boolean> {
         return OptionalJsonProperty(key, initOptionalBoolean, putOptionalBoolean).addProperty()
     }
@@ -95,6 +101,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun BooleanJson.Companion.jsonArray(key: String): JsonProperty<BooleanArray> {
         return JsonProperty(key, initBooleanArray, putBooleanArray).addProperty()
     }
+
+    override fun BooleanJson.Companion.jsonArray(key: String, default: BooleanArray) = jsonArray(key).apply { value = default }
 
     override fun BooleanJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<BooleanArray> {
         return OptionalJsonProperty(key, initOptionalBooleanArray, putOptionalBooleanArray).addProperty()
@@ -107,6 +115,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initInt, putInt).addProperty()
     }
 
+    override fun IntJson.Companion.json(key: String, default: Int) = json(key).apply { value = default }
+
     override fun IntJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Int> {
         return OptionalJsonProperty(key, initOptionalInt, putOptionalInt).addProperty()
     }
@@ -114,6 +124,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun IntJson.Companion.jsonArray(key: String): JsonProperty<IntArray> {
         return JsonProperty(key, initIntArray, putIntArray).addProperty()
     }
+
+    override fun IntJson.Companion.jsonArray(key: String, default: IntArray) = jsonArray(key).apply { value = default }
 
     override fun IntJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<IntArray> {
         return OptionalJsonProperty(key, initOptionalIntArray, putOptionalIntArray).addProperty()
@@ -126,6 +138,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initLong, putLong).addProperty()
     }
 
+    override fun LongJson.Companion.json(key: String, default: Long) = json(key).apply { value = default }
+
     override fun LongJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Long> {
         return OptionalJsonProperty(key, initOptionalLong, putOptionalLong).addProperty()
     }
@@ -133,6 +147,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun LongJson.Companion.jsonArray(key: String): JsonProperty<LongArray> {
         return JsonProperty(key, initLongArray, putLongArray).addProperty()
     }
+
+    override fun LongJson.Companion.jsonArray(key: String, default: LongArray) = jsonArray(key).apply { value = default }
 
     override fun LongJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<LongArray> {
         return OptionalJsonProperty(key, initOptionalLongArray, putOptionalLongArray).addProperty()
@@ -145,6 +161,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initDouble, putDouble).addProperty()
     }
 
+    override fun DoubleJson.Companion.json(key: String, default: Double) = json(key).apply { value = default }
+
     override fun DoubleJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Double> {
         return OptionalJsonProperty(key, initOptionalDouble, putOptionalDouble).addProperty()
     }
@@ -152,6 +170,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun DoubleJson.Companion.jsonArray(key: String): JsonProperty<DoubleArray> {
         return JsonProperty(key, initDoubleArray, putDoubleArray).addProperty()
     }
+
+    override fun DoubleJson.Companion.jsonArray(key: String, default: DoubleArray) = jsonArray(key).apply { value = default }
 
     override fun DoubleJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<DoubleArray> {
         return OptionalJsonProperty(key, initOptionalDoubleArray, putOptionalDoubleArray).addProperty()
@@ -164,6 +184,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initDate, putDate).addProperty()
     }
 
+    override fun DateJson.Companion.json(key: String, default: Date) = json(key).apply { value = default }
+
     override fun DateJson.Companion.jsonOptional(key: String): OptionalJsonProperty<Date> {
         return OptionalJsonProperty(key, initOptionalDate, putOptionalDate).addProperty()
     }
@@ -171,6 +193,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun DateJson.Companion.jsonArray(key: String): JsonProperty<Array<Date>> {
         return JsonProperty(key, initDateArray, putDateArray).addProperty()
     }
+
+    override fun DateJson.Companion.jsonArray(key: String, default: Array<Date>) = jsonArray(key).apply { value = default }
 
     override fun DateJson.Companion.jsonOptionalArray(key: String): OptionalJsonProperty<Array<Date>> {
         return OptionalJsonProperty(key, initOptionalDateArray, putOptionalDateArray).addProperty()
@@ -183,6 +207,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initJsonObject(creator), putJsonObject()).addProperty()
     }
 
+    override fun <T : IJson> Json.Companion.json(key: String, creator: () -> T, default: T) = json(key, creator).apply { value = default }
+
     override fun<T : IJson> Json.Companion.jsonOptional(key: String, creator: () -> T): OptionalJsonProperty<T> {
         return OptionalJsonProperty(key, initOptionalJsonObject(creator), putOptionalJsonObject()).addProperty()
     }
@@ -190,6 +216,8 @@ open class HKJson(json: JSONObject? = null) : IJson {
     override fun<T : IJson> Json.Companion.jsonArray(key: String, creator: (Int) -> Array<T>): JsonProperty<Array<T>> {
         return JsonProperty(key, initJsonArray(creator), putJsonArray()).addProperty()
     }
+
+    override fun <T : IJson> Json.Companion.jsonArray(key: String, creator: (Int) -> Array<T>, default: Array<T>) = jsonArray(key, creator).apply { value = default }
 
     override fun<T : IJson> Json.Companion.jsonOptionalArray(key: String, creator: (Int) -> Array<T>): OptionalJsonProperty<Array<T>> {
         return OptionalJsonProperty(key, initOptionalJsonArray(creator), putOptionalJsonArray()).addProperty()
@@ -202,15 +230,14 @@ open class HKJson(json: JSONObject? = null) : IJson {
         return JsonProperty(key, initter, putter).addProperty()
     }
 
+    override fun <T> Json.Companion.jsonCustom(key: String, initter: (JSONObject, String) -> T, putter: (JSONObject, String, T) -> Unit, default: T)
+            = jsonCustom(key, initter, putter).apply { value = default }
+
     override fun<T> Json.Companion.jsonOptionalCustom(key: String, initter: (JSONObject, String) -> T?, putter: (JSONObject, String, T?) -> Unit): OptionalJsonProperty<T> {
         return OptionalJsonProperty(key, initter, putter).addProperty()
     }
 
     companion object {
-        private fun nullCheck(json: JSONObject, key: String) {
-            if (json.isNull(key)) throw JSONException("null key : $key")
-        }
-
         /*
         * get Object for init Object
         * */
@@ -269,16 +296,14 @@ open class HKJson(json: JSONObject? = null) : IJson {
             Array(ar.length(), { i -> Date(ar.getLong(i)) })
         }
 
-        private fun <T : IJson> getJsonObject(creator: () -> T):
-                (JSONObject, String) -> T {
+        private fun <T : IJson> getJsonObject(creator: () -> T): (JSONObject, String) -> T {
             return {
                 json, key ->
                 creator().apply { this.parseJson(json.getJSONObject(key)!!) }
             }
         }
 
-        private fun <T : IJson> getJsonArray(creator: (Int) -> Array<T>):
-                (JSONObject, String) -> Array<T> {
+        private fun <T : IJson> getJsonArray(creator: (Int) -> Array<T>): (JSONObject, String) -> Array<T> {
             return {
                 json, key ->
                 val ar = json.getJSONArray(key);
@@ -295,7 +320,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         * */
         private val initString: (JSONObject, String) -> String = {
             json, key ->
-            nullCheck(json, key); getString.invoke(json, key)
+            getString.invoke(json, key)
         }
         private val initOptionalString: (JSONObject, String) -> String? = {
             json, key ->
@@ -303,7 +328,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initStringArray: (JSONObject, String) -> Array<String> = {
             json, key ->
-            nullCheck(json, key); getStringArray.invoke(json, key)
+            getStringArray.invoke(json, key)
         }
         private val initOptionalStringArray: (JSONObject, String) -> Array<String>? = {
             json, key ->
@@ -311,7 +336,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initBoolean: (JSONObject, String) -> Boolean = {
             json, key ->
-            nullCheck(json, key); getBoolean.invoke(json, key)
+            getBoolean.invoke(json, key)
         }
         private val initOptionalBoolean: (JSONObject, String) -> Boolean? = {
             json, key ->
@@ -319,7 +344,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initBooleanArray: (JSONObject, String) -> BooleanArray = {
             json, key ->
-            nullCheck(json, key); getBooleanArray.invoke(json, key)
+            getBooleanArray.invoke(json, key)
         }
         private val initOptionalBooleanArray: (JSONObject, String) -> BooleanArray? = {
             json, key ->
@@ -327,7 +352,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initInt: (JSONObject, String) -> Int = {
             json, key ->
-            nullCheck(json, key); getInt.invoke(json, key)
+            getInt.invoke(json, key)
         }
         private val initOptionalInt: (JSONObject, String) -> Int? = {
             json, key ->
@@ -335,7 +360,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initIntArray: (JSONObject, String) -> IntArray = {
             json, key ->
-            nullCheck(json, key); getIntArray.invoke(json, key)
+            getIntArray.invoke(json, key)
         }
         private val initOptionalIntArray: (JSONObject, String) -> IntArray? = {
             json, key ->
@@ -343,7 +368,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initLong: (JSONObject, String) -> Long = {
             json, key ->
-            nullCheck(json, key); getLong.invoke(json, key)
+            getLong.invoke(json, key)
         }
         private val initOptionalLong: (JSONObject, String) -> Long? = {
             json, key ->
@@ -351,7 +376,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initLongArray: (JSONObject, String) -> LongArray = {
             json, key ->
-            nullCheck(json, key); getLongArray.invoke(json, key)
+            getLongArray.invoke(json, key)
         }
         private val initOptionalLongArray: (JSONObject, String) -> LongArray? = {
             json, key ->
@@ -359,7 +384,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initDouble: (JSONObject, String) -> Double = {
             json, key ->
-            nullCheck(json, key); getDouble.invoke(json, key)
+            getDouble.invoke(json, key)
         }
         private val initOptionalDouble: (JSONObject, String) -> Double? = {
             json, key ->
@@ -367,7 +392,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initDoubleArray: (JSONObject, String) -> DoubleArray = {
             json, key ->
-            nullCheck(json, key); getDoubleArray.invoke(json, key)
+            getDoubleArray.invoke(json, key)
         }
         private val initOptionalDoubleArray: (JSONObject, String) -> DoubleArray? = {
             json, key ->
@@ -375,7 +400,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initDate: (JSONObject, String) -> Date = {
             json, key ->
-            nullCheck(json, key); getDate.invoke(json, key)
+            getDate.invoke(json, key)
         }
         private val initOptionalDate: (JSONObject, String) -> Date? = {
             json, key ->
@@ -383,39 +408,35 @@ open class HKJson(json: JSONObject? = null) : IJson {
         }
         private val initDateArray: (JSONObject, String) -> Array<Date> = {
             json, key ->
-            nullCheck(json, key); getDateArray.invoke(json, key)
+            getDateArray.invoke(json, key)
         }
         private val initOptionalDateArray: (JSONObject, String) -> Array<Date>? = {
             json, key ->
             if (json.isNull(key)) null else getDateArray.invoke(json, key)
         }
 
-        private fun <T : IJson> initJsonObject(creator: () -> T):
-                (JSONObject, String) -> T {
+        private fun <T : IJson> initJsonObject(creator: () -> T): (JSONObject, String) -> T {
             return {
                 json, key ->
-                nullCheck(json, key); getJsonObject(creator).invoke(json, key)
+                getJsonObject(creator).invoke(json, key)
             }
         }
 
-        private fun <T : IJson> initOptionalJsonObject(creator: () -> T):
-                (JSONObject, String) -> T? {
+        private fun <T : IJson> initOptionalJsonObject(creator: () -> T): (JSONObject, String) -> T? {
             return {
                 json, key ->
                 if (json.isNull(key)) null else getJsonObject(creator).invoke(json, key)
             }
         }
 
-        private fun <T : IJson> initJsonArray(creator: (Int) -> Array<T>):
-                (JSONObject, String) -> Array<T> {
+        private fun <T : IJson> initJsonArray(creator: (Int) -> Array<T>): (JSONObject, String) -> Array<T> {
             return {
                 json, key ->
-                nullCheck(json, key); getJsonArray(creator).invoke(json, key)
+                getJsonArray(creator).invoke(json, key)
             }
         }
 
-        private fun <T : IJson> initOptionalJsonArray(creator: (Int) -> Array<T>):
-                (JSONObject, String) -> Array<T>? {
+        private fun <T : IJson> initOptionalJsonArray(creator: (Int) -> Array<T>): (JSONObject, String) -> Array<T>? {
             return {
                 json, key ->
                 if (json.isNull(key)) null else getJsonArray(creator).invoke(json, key)
@@ -557,8 +578,7 @@ open class HKJson(json: JSONObject? = null) : IJson {
             json.put(key, value.makeJson())
         }
 
-        private fun <T : IJson> putOptionalJsonObject():
-                (JSONObject, String, T?) -> Unit = {
+        private fun <T : IJson> putOptionalJsonObject(): (JSONObject, String, T?) -> Unit = {
             json, key, value ->
             if (value != null) putJsonObject<T>().invoke(json, key, value)
         }

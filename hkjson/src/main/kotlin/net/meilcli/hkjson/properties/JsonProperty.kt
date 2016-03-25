@@ -1,6 +1,7 @@
 package net.meilcli.hkjson.properties
 
 import net.meilcli.hkjson.IJson
+import org.json.JSONException
 import org.json.JSONObject
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
@@ -20,7 +21,13 @@ open class JsonProperty<T>(
     }
 
     override fun init(json: JSONObject) {
-        value = initter(json, key)
+        if (json.isNull(key)) {
+            if (value == null) {
+                throw JSONException("null key : $key")
+            }
+        } else {
+            value = initter(json, key)
+        }
     }
 
     override fun put(json: JSONObject) {

@@ -13,6 +13,7 @@ class StringData(json: JSONObject? = null) : IJson by HKJson(json) {
     val testOptionalStringVal: String? by StringJson.jsonOptional(testOptionalStringValKey)
     val testOptionalStringVarKey = "test_optional_string_var"
     var testOptionalStringVar by StringJson.jsonOptional(testOptionalStringVarKey)
+    val testDefaultVal by StringJson.json("test_default_value", "")
 
     companion object : IJsonArray<StringData> {
 
