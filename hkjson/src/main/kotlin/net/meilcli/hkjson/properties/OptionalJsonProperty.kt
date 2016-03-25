@@ -11,10 +11,10 @@ class OptionalJsonProperty<T>(
         JsonProperty<T?>(key, initter, putter) {
 
     override fun put(json: JSONObject) {
-        putter(json, key, t)
+        putter(json, key, value)
     }
 
     override fun getValue(thisRef: IJson, property: KProperty<*>): T? {
-        return this.t
+        return this.value
     }
 }

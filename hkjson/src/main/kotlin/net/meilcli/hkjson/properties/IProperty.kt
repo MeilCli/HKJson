@@ -3,8 +3,9 @@ package net.meilcli.hkjson.properties
 import org.json.JSONException
 import org.json.JSONObject
 
-interface IProperty {
+interface IProperty<T> {
     val key: String
+    var value: T?
 
     @Throws(JSONException::class)
     fun put(json: JSONObject)

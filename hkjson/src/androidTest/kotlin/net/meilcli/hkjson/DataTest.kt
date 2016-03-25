@@ -64,6 +64,9 @@ class DataTest : TestCase() {
         // json parse test
         val stringData = StringData()
         val jsonObjectData1 = JsonObjectData()
+        assertEquals(jsonObjectData1.isValid(), false)
+        jsonObjectData1.testJsonObjectVar = StringData()
+        assertEquals(jsonObjectData1.isValid(), false)
         val json = JSONObject().apply {
             this.put(jsonObjectData1.testJsonObjectVarKey, JSONObject().apply {
                 this.put(stringData.testStringValKey, testStringVal1)
@@ -73,6 +76,7 @@ class DataTest : TestCase() {
             })
         }
         jsonObjectData1.parseJson(json)
+        assertEquals(jsonObjectData1.isValid(), true)
         assertEquals(jsonObjectData1.testJsonObjectVar.testStringVal, testStringVal1)
         assertEquals(jsonObjectData1.testJsonObjectVar.testStringVar, testStringVar1)
         assertEquals(jsonObjectData1.testJsonObjectVar.testOptionalStringVal, testStringVal1)
@@ -93,6 +97,7 @@ class DataTest : TestCase() {
         assertEquals(jsonObjectData3.testJsonObjectVar.testStringVar, testStringVar2)
         assertEquals(jsonObjectData3.testJsonObjectVar.testOptionalStringVal, testStringVal1)
         assertEquals(jsonObjectData3.testJsonObjectVar.testOptionalStringVar, testStringVar2)
+        assertEquals(jsonObjectData3.isValid(), true)
     }
 
     fun testJsonArray() {
@@ -103,6 +108,11 @@ class DataTest : TestCase() {
         // json parse test
         val stringData = StringData()
         val jsonArrayData1 = JsonArrayData()
+        assertEquals(jsonArrayData1.isValid(), false)
+        jsonArrayData1.testJsonArrayVar = Array(1, { i -> StringData() })
+        assertEquals(jsonArrayData1.isValid(), false)
+        jsonArrayData1.testJsonArrayVar = emptyArray()
+        assertEquals(jsonArrayData1.isValid(), true)
         val json = JSONObject().apply {
             this.put(jsonArrayData1.testJsonArrayVarKey, JSONArray().apply {
                 this.put(0, JSONObject().apply {
@@ -120,6 +130,7 @@ class DataTest : TestCase() {
             })
         }
         jsonArrayData1.parseJson(json)
+        assertEquals(jsonArrayData1.isValid(), true)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testStringVal, testStringVal1)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testStringVar, testStringVar1)
         assertEquals(jsonArrayData1.testJsonArrayVar[0].testOptionalStringVal, testStringVal1)
@@ -139,10 +150,12 @@ class DataTest : TestCase() {
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testStringVar, testStringVar2)
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testOptionalStringVal, testStringVal1)
         assertEquals(jsonArrayData2.testJsonArrayVar[1].testOptionalStringVar, testStringVar2)
+        assertEquals(jsonArrayData2.isValid(), true)
     }
 
     fun testData() {
         val data1 = Data()
+        assertEquals(data1.isValid(), false)
         data1.s1 = "s1"
         data1.s2 = "s2"
         data1.s3 = arrayOf("s3")
@@ -165,7 +178,9 @@ class DataTest : TestCase() {
         data1.d4 = doubleArrayOf(4.0)
         data1.da1 = Date()
         data1.da2 = Date()
+        assertEquals(data1.isValid(), false)
         data1.da3 = arrayOf(Date())
+        assertEquals(data1.isValid(), true)
         data1.da4 = arrayOf(Date())
         val data2 = Data(data1.makeJson())
         assertEquals(data1, data2)

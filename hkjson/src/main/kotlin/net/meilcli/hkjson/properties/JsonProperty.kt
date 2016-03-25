@@ -10,31 +10,31 @@ open class JsonProperty<T>(
         key: String,
         val initter: (JSONObject, String) -> T,
         val putter: (JSONObject, String, T) -> Unit) :
-        ReadWriteProperty<IJson, T>, ReadOnlyProperty<IJson, T>, IProperty {
+        ReadWriteProperty<IJson, T>, ReadOnlyProperty<IJson, T>, IProperty<T> {
 
     override val key: String
-    internal var t: T? = null
+    override var value: T? = null
 
     init {
         this.key = key
     }
 
     override fun init(json: JSONObject) {
-        t = initter(json, key)
+        value = initter(json, key)
     }
 
     override fun put(json: JSONObject) {
-        require(t != null) { "put value is must init json key:$key" }
-        putter(json, key, t!!)
+        require(value != null) { "put value is must init json key:$key" }
+        putter(json, key, value!!)
     }
 
     override fun getValue(thisRef: IJson, property: KProperty<*>): T {
-        require(t != null) { "get value is must init json key:$key" }
-        return this.t!!
+        require(value != null) { "get value is must init json key:$key" }
+        return this.value!!
     }
 
     override fun setValue(thisRef: IJson, property: KProperty<*>, value: T) {
-        this.t = value
+        this.value = value
     }
 
 }

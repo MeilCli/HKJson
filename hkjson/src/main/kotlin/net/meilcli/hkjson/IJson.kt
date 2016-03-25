@@ -16,6 +16,8 @@ interface IJson {
 
     fun clearJsonCache()
 
+    fun isValid(): Boolean
+
     /*
     * String
     * */

@@ -12,7 +12,7 @@ import java.util.*
 // have extensibility
 open class HKJson(json: JSONObject? = null) : IJson {
 
-    protected val properties = ArrayList<IProperty>()
+    protected val properties = ArrayList<IProperty<*>>()
     protected var json: JSONObject?
 
     init {
@@ -39,7 +39,23 @@ open class HKJson(json: JSONObject? = null) : IJson {
         json = null
     }
 
-    protected fun <T : IProperty> T.addProperty(): T {
+    override fun isValid(): Boolean {
+        for (p in properties) {
+            if (p is JsonProperty && p is OptionalJsonProperty == false) {
+                if (p.value == null) return false
+            }
+            var value = p.value
+            if (value is IJson) {
+                if (value.isValid().not()) return false
+            }
+            if (value is Array<*>) {
+                if (value.asSequence().filterIsInstance(IJson::class.java).all { it.isValid() }.not()) return false
+            }
+        }
+        return true
+    }
+
+    protected fun <T : IProperty<*>> T.addProperty(): T {
         properties.add(this)
         if (json != null) this.init(json!!)
         return this
