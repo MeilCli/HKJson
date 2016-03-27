@@ -6,22 +6,20 @@ This library is helper of JSONObject and JSONArray
 
 #### gradle	
 	dependencies {
-		compile 'meilcli:hkjson:1.1.2'
+		compile 'meilcli:hkjson:1.2.0'
 	}
 
 #### Usage
 	import net.meilcli.hkjson.HKJson
-	import net.meilcli.hkjson.IJson
-	import net.meilcli.hkjson.IJsonArray
-	import net.meilcli.hkjson.objects.StringJson
+	import net.meilcli.hkjson.IHKJson
 	import org.json.JSONObject
 
-	class Data(json:JSONObject? =null) : IJson by HKJson(json){
+	class Data(json:JSONObject? =null) : IHKJson by HKJson(json){
 
-    	val testStringVal:String by StringJson.json("test_string_val")
-    	var testStringVar by StringJson.json("test_string_var") // type is omitted
-    	val testOptionalStringVal: String? by StringJson.jsonOptional("test_optional_string_val")
-    	var testOptionalStringVar by StringJson.jsonOptional("test_optional_string_var")
+    	val testStringVal:String by string.json("test_string_val")
+    	var testStringVar by string.json("test_string_var") // type is omitted
+    	val testOptionalStringVal: String? by string.optional.json("test_optional_string_val")
+    	var testOptionalStringVar by string.optional.json("test_optional_string_var")
 
 	}
 	
