@@ -2,7 +2,7 @@
 A Json library for Android 4.0.3 and upper in Kotlin  
 This library is helper of JSONObject and JSONArray
 
-[日本語解説](http://meilcli.net/Project/HKJson/)
+[日本語解説](http://meilcli.net/project/hkjson/)
 
 #### gradle	
 	dependencies {
